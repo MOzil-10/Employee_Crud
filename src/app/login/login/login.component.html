@@ -1,1 +1,28 @@
-<p>login works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 offset-md-4">
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <h1>Login</h1>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input formControlName="email" [ngClass]="{'is-invalid': submitted && email?.invalid}" type="email" class="form-control">
+                    <div *ngIf="submitted && email?.invalid" class="invalid-feedback">
+                        <div *ngFor="let error of getErrors('email')">{{ error }}</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input formControlName="password" [ngClass]="{'is-invalid': submitted && password?.invalid}" type="password" class="form-control">
+                    <div *ngIf="submitted && password?.invalid" class="invalid-feedback">
+                        <div *ngFor="let error of getErrors('password')">{{ error }}</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+
+        </div>
+    </div>
+</div>
